@@ -1,0 +1,29 @@
+syntax = "v1"
+
+info(
+	title: "type title here"
+	desc: "type desc here"
+	author: "type author here"
+	email: "type email here"
+	version: "type version here"
+)
+
+type (
+	OrderReq {
+		Id string `json:"id"`
+	}
+
+	OrderReply {
+		Id   string `json:"id"`
+		Name string `json:"name"`
+	}
+)
+
+@server(
+	group : order
+)
+
+service order-api {
+	@handler getOrder
+	get /api/order/getOrder (OrderReq) returns (OrderReply)
+}
